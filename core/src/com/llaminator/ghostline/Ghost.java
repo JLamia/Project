@@ -8,17 +8,35 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Ghost
 {
-  public static boolean IsAlive = true;
+  private static boolean _IsAlive;
+  private double _x;
+  private double _y;
   
-  public void setIsNotAlive(){
+  public void Ghost(double _x, double _y){
+    //create picture
+    _IsAlive = true;
+    this._x = _x;
+    this._y = _y;
+  }
+  
+  public double GetX(){
+    return _x;
+  }
+  
+  public double GetY(){
+    return _y;
+  }
+  
+  private void setDeath(){
     IsAlive = false;
   }
   
-  public NextStep(){ // ask for next step with redrawing
-    return isAlive;
+  public boolean IsAlive(){ // ask for next step with redrawing
+    return _IsAlive;
   }
   
   public void Death(){
+     setDeath();
      imageView.animate().translationYBy(100).alpha(0).setDuration(1000);
      // smth for death
   }
